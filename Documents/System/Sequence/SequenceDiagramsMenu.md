@@ -30,5 +30,5 @@
 
 <a name="create_new_task"/>
 
-# 5 Получение подробной статистики
+# 5 Добавление нового задания
 ![Добавить адрес интернет-ресурса](../../../Illustrations/PNG/Sequence/CreateANewTaskSequence.vpd.png)
