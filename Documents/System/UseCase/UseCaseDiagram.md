@@ -2,4 +2,6 @@
 
 ![Диаграмма вариантов использования](../../../Illustrations/PNG/Use%20Case/UseCaseDiagram.vpd.png)
 
-Ключевые понятия в [глоссариуме](../UseCase/Glossarium.md). 
+Ключевые понятия: [глоссариуме](../UseCase/Glossarium.md). 
+
+Поток событий: [поток событий](../UseCase/FlowOfEvents.md). 
