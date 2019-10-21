@@ -16,7 +16,7 @@
 <a name="login"/>
 
 # 2 Вход в учётную запись
-![Войти в учётную записть](../../../Illustrations/PNG/Sequence/LogInSequence.vpd.png)
+![Войти в учётную записть](../../../Illustrations/PNG/Sequence/LoginSequence.vpd.png)
 
 <a name="get_brief_statistics"/>
 
