@@ -4,4 +4,4 @@
 
 Ключевые понятия: [глоссариуме](../UseCase/Glossarium.md). 
 
-Поток событий: [поток событий](../UseCase/FlowOfEvents.md). 
+Подробное описание действий: [поток событий](../UseCase/FlowOfEvents.md). 
