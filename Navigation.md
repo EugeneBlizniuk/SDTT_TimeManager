@@ -1,4 +1,4 @@
-# Time Manger
+# Time Manager
 Язык реализации: Java  
 Версия: 8
 
