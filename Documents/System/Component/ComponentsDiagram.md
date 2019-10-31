@@ -1,2 +1,2 @@
-# Диаграмма компонентов
-![Диаграмма вариантов использования](../../../Illustrations/PNG/Component/ComponentDiagram.vpd.png)
+# Диаграмма развертывания и компонентов
+![Диаграмма развертывания и компонентов](../../../Illustrations/PNG/Component/ComponentDiagram.vpd.png)
