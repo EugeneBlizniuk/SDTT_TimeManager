@@ -1,2 +1,2 @@
 # Диаграмма развертывания и компонентов
-![Диаграмма развертывания и компонентов](../../../Illustrations/PNG/Component/ComponentDiagram.vpd.png)
+![Диаграмма развертывания и компонентов](../../../Illustrations/PNG/Component_and_Deployment/Component_and_Deployment.vpd.pn)
