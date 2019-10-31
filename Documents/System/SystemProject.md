@@ -7,4 +7,4 @@
 3 [Диаграммы последовательностей](Sequence/SequenceDiagramsMenu.md)  
 4 [Диаграммы состояний](State/README.md)  
 5 [Диаграмма классов](Class/ClassDiagram.md)
-6 [Диаграмма развертывания и компонентов](Component_and_deployment/ComponentsAndDeploymentDiagram.md)   
+6 [Диаграмма компонентов](Component_and_deployment/ComponentsAndDeploymentDiagram.md)   
