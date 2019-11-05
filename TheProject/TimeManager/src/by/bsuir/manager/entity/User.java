@@ -1,10 +1,13 @@
-package by.bsuir.manager.bean;
+package by.bsuir.manager.entity;
 
 import java.util.Objects;
 
-public class User {
+public class User extends Entity{
     private String login;
     private String password;
+    private int id;
+
+    public User() {}
 
     public User(String login, String password) {
         this.login = login;
@@ -15,8 +18,24 @@ public class User {
         return login;
     }
 
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
     public String getPassword() {
         return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     @Override

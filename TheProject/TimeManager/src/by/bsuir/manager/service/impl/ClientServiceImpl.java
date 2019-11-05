@@ -1,6 +1,6 @@
 package by.bsuir.manager.service.impl;
 
-import by.bsuir.manager.bean.User;
+import by.bsuir.manager.entity.User;
 import by.bsuir.manager.service.ClientService;
 
 public class ClientServiceImpl implements ClientService {
