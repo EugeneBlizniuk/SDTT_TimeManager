@@ -6,7 +6,7 @@ import by.bsuir.manager.dao.impl.SQLUserDAO;
 public final class DAOFactory {
     private static final DAOFactory INSTANCE = new DAOFactory();
 
-    private final UserDAO sqlUserImpl = new SQLUserDAO();
+//    private final UserDAO sqlUserImpl = new SQLUserDAO();
 
     private DAOFactory() {}
 
@@ -14,7 +14,7 @@ public final class DAOFactory {
         return INSTANCE;
     }
 
-    public UserDAO getUserDAO() {
-        return sqlUserImpl;
-    }
+//    public UserDAO getUserDAO() {
+//        return sqlUserImpl;
+//    }
 }
