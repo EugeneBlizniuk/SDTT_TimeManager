@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Welcome page</title>
-<!--    <link rel="stylesheet" type="text/css" href="../web_resources/css/SignUp.css">-->
+    <!--    <link rel="stylesheet" type="text/css" href="../web_resources/css/SignUp.css">-->
     <style>
         html, body {
             width: 100%;
@@ -16,6 +16,36 @@
             text-align: center;
             color: chocolate;
         }
+        #container {
+            display: block;
+            position: fixed;
+            width: 250px;
+            height: 280px;
+            top: 23%;
+            left: 60%;
+        }
+        #container input{
+            margin-left: 20px;
+            margin-top: 20px;
+            width: 120px;
+            height: 50px;
+            font-size: 20px;
+            font-weight: bold;
+            color: #fff;
+            background-image: -webkit-gradient(linear, left top, left bottom, from(#acd6ef), to(#6ec2e8));
+            border-radius: 10px;
+            border: 1px solid #66add6;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, .3), inset 0 1px 0 rgba(255, 255, 255, .5);
+            cursor: pointer;
+        }
+
+        #container input[type=button]:hover {
+            background-image: -webkit-gradient(linear, left top, left bottom, from(#b6e2ff), to(#6ec2e8));
+        }
+
+        #container input[type=button]:active {
+            background-image: -webkit-gradient(linear, left top, left bottom, from(#6ec2e8), to(#b6e2ff));
+        }
 
         #lower_login input{
             margin-left: 20px;
@@ -27,7 +57,7 @@
             width: 250px;
             height: 280px;
             top: 20%;
-            left: 40%;
+            left: 30%;
         }
 
         #login_form label {
@@ -91,17 +121,19 @@
     </style>
 </head>
 <body>
-    <h1>Would you like to start?</h1>
-    <div id="login_form">
-        <label>Login:</label>
-        <input type="text">
-        <label>Password:</label>
-        <input type="text">
-        <label>Repeat password:</label>
-        <input type="text">
-        <div id="lower_login">
-            <input type="submit" value="Sign Up">
-        </div>
+<h1>What's up?</h1>
+<div id="login_form">
+    <label>Login:</label>
+    <input type="text">
+    <label>Password:</label>
+    <input type="text">
+    <div id="lower_login">
+        <input type="submit" value="Log In">
     </div>
+</div>
+<div id="container">
+    <input id="sign_up" type="button" value="Sign Up">
+    <input id="just_try" type="button" value="Just try">
+</div>
 </body>
 </html>
