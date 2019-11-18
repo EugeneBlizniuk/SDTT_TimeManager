@@ -10,6 +10,7 @@ import java.util.List;
 
 public class UserDAOImpl implements UserDAO {
     private static final String SQL_SELECT_ALL_USERS = "SELECT id, login FROM userBook";
+    private static final String SQL_ADD_A_USER = "INSERT INTO userTable (login, password) VALUES(?,?)";
     private static final String SQL_SELECT_USER_BY_LOGIN = "SELECT login FROM userBook WHERE id=?";
 
     @Override
@@ -108,12 +109,14 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
-    public void signIn(String login, String password) {
-
+    public boolean signIn(String login, String password) {
+        return false;
     }
 
     @Override
-    public void signUp(User user) {
+    public boolean signUp(User user) {
+        boolean isCorrect = false;
 
+        return isCorrect;
     }
 }

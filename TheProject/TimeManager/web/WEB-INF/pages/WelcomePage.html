@@ -84,13 +84,11 @@
             transition: all .4s ease;
         }
 
-        input[type=submit]:hover,
-        input[type=button]:hover {
+        input[type=submit]:hover {
             background-image: -webkit-gradient(linear, left top, left bottom, from(#b6e2ff), to(#6ec2e8));
         }
 
-        input[type=submit]:active,
-        input[type=button]:active {
+        input[type=submit]:active {
             background-image: -webkit-gradient(linear, left top, left bottom, from(#6ec2e8), to(#b6e2ff));
         }
 
@@ -121,19 +119,21 @@
     </style>
 </head>
 <body>
-<h1>What's up?</h1>
-<div id="login_form">
-    <label>Login:</label>
-    <input type="text">
-    <label>Password:</label>
-    <input type="text">
-    <div id="lower_login">
-        <input type="submit" value="Log In">
-    </div>
-</div>
-<div id="container">
-    <input id="sign_up" type="button" value="Sign Up">
-    <input id="just_try" type="button" value="Just try">
-</div>
+    <h1>What's up?</h1>
+    <form method="post" action="/home">
+        <div id="login_form">
+            <label>Login:</label>
+            <input type="text">
+            <label>Password:</label>
+            <input type="text">
+            <div id="lower_login">
+                <input type="submit" name="logInButton" value="Log In">
+            </div>
+        </div>
+        <div id="container">
+            <input id="sign_up" name="signUpButton" type="submit" value="Sign Up">
+            <input id="just_try" name="justTryButton" type="submit" value="Just try">
+        </div>
+    </form>
 </body>
 </html>

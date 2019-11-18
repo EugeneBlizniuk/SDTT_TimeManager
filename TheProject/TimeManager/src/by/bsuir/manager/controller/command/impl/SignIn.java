@@ -17,7 +17,7 @@ public class SignIn implements Command {
         ClientService clientService = serviceFactory.getClientService();
 
         clientService.signIn(login, password);
-        response = "Welcom!";
+        response = "Welcome!";
 
         return response;
     }

@@ -21,7 +21,7 @@
             margin-left: 20px;
         }
 
-        #login_form {
+        #sign_up_form {
             display: block;
             position: fixed;
             width: 250px;
@@ -30,7 +30,7 @@
             left: 40%;
         }
 
-        #login_form label {
+        #sign_up_form label {
             color: #555;
             display: block;
             margin-left: 20px;
@@ -54,13 +54,11 @@
             transition: all .4s ease;
         }
 
-        input[type=submit]:hover,
-        input[type=button]:hover {
+        input[type=submit]:hover {
             background-image: -webkit-gradient(linear, left top, left bottom, from(#b6e2ff), to(#6ec2e8));
         }
 
-        input[type=submit]:active,
-        input[type=button]:active {
+        input[type=submit]:active {
             background-image: -webkit-gradient(linear, left top, left bottom, from(#6ec2e8), to(#b6e2ff));
         }
 
@@ -92,7 +90,7 @@
 </head>
 <body>
     <h1>Would you like to start?</h1>
-    <div id="login_form">
+    <div id="sign_up_form">
         <label>Login:</label>
         <input type="text">
         <label>Password:</label>
@@ -100,7 +98,7 @@
         <label>Repeat password:</label>
         <input type="text">
         <div id="lower_login">
-            <input type="submit" value="Sign Up">
+            <input type="submit" name="create" value="Sign Up">
         </div>
     </div>
 </body>

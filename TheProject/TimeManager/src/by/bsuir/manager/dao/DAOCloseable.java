@@ -14,6 +14,7 @@ public interface DAOCloseable <K, T extends Entity> {
     boolean delete(K id);
     boolean create(T t);
     T update(T t);
+
     default void close(Statement statement) {
         try {
             if(statement != null) {
