@@ -8,7 +8,6 @@
           <element id="module-output" name="TimeManager" />
         </element>
       </element>
-      <element id="library" level="project" name="org.postgresql:pgjdbc-benchmark:42.2.2" />
     </root>
   </artifact>
 </component>

@@ -13,8 +13,17 @@ import java.util.Properties;
 
 public class UserDAOImpl implements UserDAO {
     private static final String SQL_SELECT_ALL_USERS = "SELECT id, login FROM users";
-    private static final String SQL_ADD_A_USER = "INSERT INTO users(id, login, password, time) VALUES(?, ?, ?, ?)";
-    private static final String SQL_SELECT_USER_BY_LOGIN = "SELECT login FROM users WHERE id=?";
+    private static final String SQL_ADD_A_USER = "INSERT INTO users(id, login, password, registration_time) " +
+                                                 "VALUES(?, ?, ?, ?)";
+    private static final String SQL_SELECT_USER_BY_LOGIN = "SELECT 2 FROM users WHERE login=?";
+
+    public UserDAOImpl() {
+        try {
+            Class.forName("org.postgresql.Driver");
+        }catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
 
     private Connection getDBConnection() {
         Connection connection = null;
@@ -34,27 +43,19 @@ public class UserDAOImpl implements UserDAO {
             e.printStackTrace();
         }
 
-        System.out.println("getDBConnection: " + connection);
         return connection;
     }
 
     @Override
     public boolean signUp(User user) {
         boolean isCorrect = false;
-
-        try {
-            Class.forName("org.postgresql.Driver");
-            System.out.println("FOUND");
-        }catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-
+        System.out.println("DAO sign up");
         Connection connection = getDBConnection();
-        System.out.println("signUp DAO" + connection);
-//        if(connection == null) {
-//            //log
-//            return isCorrect;
-//        }
+
+        if(connection == null) {
+            //log
+            return isCorrect;
+        }
 
         PreparedStatement statement = null;
 
@@ -80,54 +81,22 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
-    public List<User> findAll() {
-        List<User> users = new ArrayList<>();
-        Connection connection = null;
-        Statement statement = null;
-
-        try {
-            connection = DriverManager.getConnection(
-                    "jdbc:postgresql://localhost:5432/time_manager_db",
-                    "postgres", "09102014Qm");
-            statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery(SQL_SELECT_ALL_USERS);
-            while(resultSet.next()) {
-                User user = new User();
-                user.setId(resultSet.getInt("id"));
-                user.setLogin(resultSet.getString("login"));
-                user.setPassword(resultSet.getString("password"));
-                user.setTime(resultSet.getString("current_time"));
-                users.add(user);
-            }
-        } catch (SQLException e) {
-            /*e.printStackTrace();*/
-            //throw new DAOException(e);
-        } finally {
-            close(statement);
-            close(connection);
-        }
-        return users;
-    }
-
-    @Override
     public List<User> findUserByLogin(String patternName) throws DAOException {
         List<User> users = new ArrayList<>();
-        System.out.println("findUserByLogin DAO: BEFORE");
         Connection connection = getDBConnection();
-        System.out.println("findUserByLogin DAO" + connection);
         PreparedStatement statement = null;
 
         try {
-            statement = connection.prepareStatement(SQL_SELECT_USER_BY_LOGIN); //exc
+            statement = connection.prepareStatement(SQL_SELECT_USER_BY_LOGIN);
             statement.setString(1, patternName);
             ResultSet resultSet = statement.executeQuery();
 
             while(resultSet.next()) {
                 User user = new User();
-                user.setId(resultSet.getInt("id"));
-                user.setLogin(resultSet.getString("login"));
-                user.setPassword(resultSet.getString("password"));
-                user.setTime(resultSet.getString("time"));
+                user.setId(resultSet.getInt(1));
+                user.setLogin(resultSet.getString(2));
+                user.setPassword(resultSet.getString(3));
+                user.setTime(resultSet.getString(4));
                 users.add(user);
             }
         } catch (SQLException e) {
@@ -141,28 +110,29 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
-    public User findEntityById(Long id) {
-        return null;
-    }
-
-    @Override
     public boolean delete(User user) {
         return false;
     }
 
     @Override
-    public boolean delete(Long id) {
-        return false;
-    }
+    public boolean isExisting(String login) throws DAOException {
+        boolean isExisting = false;
 
-    @Override
-    public boolean create(User user) {
-        return false;
-    }
+        try(Connection connection = getDBConnection();
+            PreparedStatement statement = connection.prepareStatement(SQL_SELECT_USER_BY_LOGIN)) {
+            statement.setString(1, login);
+            try(ResultSet resultSet = statement.executeQuery()) {
+                if(resultSet.next()) {
+                    isExisting = true;
+                }
+            }
+        } catch (SQLException e) {
+            throw new DAOException(e);
+        } finally {
+//            close(connection);
+        }
 
-    @Override
-    public User update(User user) {
-        return null;
+        return  isExisting;
     }
 
     @Override

@@ -25,7 +25,7 @@ public class SignUp implements Command {
         if(client.signUp(user)) {
             response = "Added!";
         } else {
-            response = "Something wrong!";
+            response = "Did not add: " + user.getLogin();
         }
 
         return response;

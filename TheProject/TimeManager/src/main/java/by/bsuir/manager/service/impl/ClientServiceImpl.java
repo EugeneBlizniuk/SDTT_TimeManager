@@ -3,7 +3,6 @@ package by.bsuir.manager.service.impl;
 import by.bsuir.manager.dao.UserDAO;
 import by.bsuir.manager.dao.exception.DAOException;
 import by.bsuir.manager.dao.factory.DAOFactory;
-import by.bsuir.manager.dao.impl.UserDAOImpl;
 import by.bsuir.manager.entity.User;
 import by.bsuir.manager.service.ClientService;
 
@@ -23,14 +22,14 @@ public class ClientServiceImpl implements ClientService {
         boolean isAdded = false;
         DAOFactory daoFactory = DAOFactory.getInstance();
         UserDAO userDAO = daoFactory.getUserDAO();
-//        try {
-//            if(userDAO.findUserByLogin(user.getLogin()).isEmpty()) {
+        try {
+            if(!userDAO.isExisting(user.getLogin())) {
                 isAdded = userDAO.signUp(user);
-//            }
-//        } catch (DAOException e) {
-//            //log
-//            e.printStackTrace();
-//        }
+            }
+        } catch (DAOException e) {
+            //log
+            e.printStackTrace();
+        }
 
         return isAdded;
     }

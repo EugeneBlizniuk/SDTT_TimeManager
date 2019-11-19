@@ -1,8 +1,5 @@
 package by.bsuir.manager.web.servlet;
 
-import by.bsuir.manager.controller.Controller;
-
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -23,7 +20,7 @@ public class TestDBServlet extends HttpServlet {
         PrintWriter printWriter = response.getWriter();
         try {
             Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/time_manager_db",
-                    "postgresql", "09102014Qm");
+                    "postgres", "09102014Qm");
 
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery("SELECT login from users");

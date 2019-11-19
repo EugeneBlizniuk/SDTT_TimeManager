@@ -1,5 +1,6 @@
 package by.bsuir.manager.dao;
 
+import by.bsuir.manager.dao.exception.DAOException;
 import by.bsuir.manager.entity.Entity;
 
 import java.sql.Connection;
@@ -8,12 +9,13 @@ import java.sql.Statement;
 import java.util.List;
 
 public interface DAOCloseable <K, T extends Entity> {
-    List<T> findAll();
-    T findEntityById(K id);
+//    List<T> findAll();
+//    T findEntityById(K id);
     boolean delete(T t);
-    boolean delete(K id);
-    boolean create(T t);
-    T update(T t);
+//    boolean delete(K id);
+//    boolean create(T t);
+    boolean isExisting(K login) throws DAOException;
+//    T update(T t);
 
     default void close(Statement statement) {
         try {

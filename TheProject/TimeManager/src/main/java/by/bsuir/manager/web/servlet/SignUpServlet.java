@@ -29,10 +29,7 @@ public class SignUpServlet extends HttpServlet {
         if(login != null && password.equals(secondPassword)) {
             Controller controller = new Controller();
             String command = "Sign_Up" + "-" + login + "-" + password;
-            System.out.println(controller.executeTask(command) + " servlet");
+            controller.executeTask(command);
         }
-//        System.out.println("Login: " + login);
-//        System.out.println("Password: " + password);
-//        System.out.println("Second password: " + secondPassword);
     }
 }

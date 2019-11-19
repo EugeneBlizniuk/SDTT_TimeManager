@@ -19,7 +19,6 @@ public final class Controller {
 
         String response;
         response = executionCommand.execute(request);
-//        System.out.println(response);
 
         return response;
     }
