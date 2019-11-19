@@ -18,6 +18,26 @@
         <servlet-class>by.bsuir.manager.web.servlet.WelcomeServlet</servlet-class>
     </servlet>
 
+    <servlet>
+        <servlet-name>SignUpServlet</servlet-name>
+        <servlet-class>by.bsuir.manager.web.servlet.SignUpServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>TestDBServlet</servlet-name>
+        <servlet-class>by.bsuir.manager.web.servlet.TestDBServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>TestDBServlet</servlet-name>
+        <url-pattern>/test</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>SignUpServlet</servlet-name>
+        <url-pattern>/sign-up</url-pattern>
+    </servlet-mapping>
+
     <servlet-mapping>
         <servlet-name>WelcomeServlet</servlet-name>
         <url-pattern>/home</url-pattern>
