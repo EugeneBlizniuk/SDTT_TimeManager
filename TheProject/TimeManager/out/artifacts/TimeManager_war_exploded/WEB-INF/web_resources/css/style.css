@@ -1,176 +1,111 @@
-@charset "utf-8";
-
-html { 
-  background: url(../images/TebPWZ6.jpg) no-repeat center center fixed; 
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
+html, body {
+	width: 100%;
+	font-family: "Helvetica Neue", Helvetica, sans-serif;
+	color: #444;
+	-webkit-font-smoothing: antialiased;
+	/*background: url(../web_resources/images/welcome_photo.jpg) repeat;*/
 }
-
-body {
-	color: #ff8b3d;
-  font-family: 'Open Sans', sans-serif;
-	font-size: 16px;
-
-}
-
-#login-form {
-	background-color: #363636;
-	border-radius: 5px;
-	-moz-border-radius: 5px;
-	-webkit-border-radius: 5px;		
-	margin: 150px auto;
-	width: 300px;
-  font-family: 'Open Sans', sans-serif;
-	font-size: 16px;
-  -webkit-box-shadow:  0px 10px 20px 0px rgba(0, 0, 0, 0.3);
-   box-shadow:  0px 10px 20px 0px rgba(0, 0, 0, 0.3);
-  
-}
-
-#login-form h1 {
-	background-color: #292829;
-	border-radius: 5px 5px 0px 0px;
-	-moz-border-radius: 5px 5px 0px 0px;
-	-webkit-border-radius: 5px 5px 0px 0px;
-	color: #fff;
-	padding: 20px;
+h1 {
 	text-align: center;
-	text-transform: uppercase;
-  font-family: 'Open Sans', sans-serif;
-	font-size: 14px;
+	color: chocolate;
 }
-
-#login-form fieldset {
-	border: none;
-	padding: 20px;
-	position: relative;
-}
-
-
-#login-form fieldset form {
-	overflow: hidden;
-	width: 270px;
-}
-
-#login-form fieldset form input {
-	font-family: Arial, Helvetica, sans-serif;
-	font-size: 14px;
-	outline: none;
-  -webkit-appearance:none;
-  width: 260px;
-  align: center;
-  position: center;
-  
-
-}
-
-#login-form fieldset form input[type="email"] {
-	border: 1px solid #292829;
-	border-radius: 3px 3px 0px 0px;
-	-moz-border-radius: 3px 3px 0px 0px;
-	-webkit-border-radius: 3px 3px 0px 0px;
-	padding: 12px 10px;
-	width: 238px;
-  -webkit-appearance:none;
-}
-
-#login-form fieldset form input[type="password"] {
-	border: 1px solid #292829;
-	border-top: none;
-	border-radius: 0px 0px 3px 3px;
-	-moz-border-radius: 0px 0px 3px 3px;
-	-webkit-border-radius: 0px 0px 3px 3px;
-	padding: 12px 10px;
-	width: 238px;
-  -webkit-appearance:none;
-}
-
-#login-form fieldset form input[type="submit"] {
-	background-color: #ebebeb;
-	border: none;
-	border-radius: 3px;
-	-moz-border-radius: 3px;
-	-webkit-border-radius: 3px;
-	color: #404040;
-	cursor: pointer;
-	float: none;
-	font-weight: bold;
-	margin-top: 20px;
-	padding: 12px 12px;
-  -webkit-appearance: none;
-}
-
-#login-form fieldset form input[type="submit"]:hover {
-	background-color: #e0e0e0;
-}
-
-#login-form fieldset form span:before {
-	background-color: #c9c9c9;
-	border-radius: 50%;
-	-moz-border-radius: 50%;
-	-webkit-border-radius: 50%;
-	content: "?";
-	display: inline-block;
-	height: 20px;
-	line-height: 20px;
-	margin-right: 10px;
-	text-align: center;
-	width: 20px;
-}
-
-#login-form fieldset form span {
-	font-size: 12px;
-	margin-top: 40px;
-}
-
-#login-form fieldset form span a{
-	color: #eb6d1a;
-	text-decoration: none;	
-}
-
-#login-form fieldset form span a:hover {
-	color: #eb6d1a;
-}
-
-/* Стили бара vladmaxi, можно удалить */
-.vladmaxi-top{
-	line-height: 24px;
-	font-size: 11px;
-	background: #eee;
-	text-transform: uppercase;
-	z-index: 9999;
+#container {
+	display: block;
 	position: fixed;
-	top:0;
-	left:0;
-	width:100%;
-	font-family: calibri;
-	font-size: 13px;
-	box-shadow: 1px 0px 2px rgba(0,0,0,0.2);
-	-webkit-animation: slideOut 0.5s ease-in-out 0.3s backwards;
+	width: 250px;
+	height: 280px;
+	top: 23%;
+	left: 60%;
 }
-@-webkit-keyframes slideOut{
-	0%{top:-30px; opacity: 0;}
-	100%{top:0px; opacity: 1;}
+#container input{
+	margin-left: 20px;
+	margin-top: 20px;
+	width: 120px;
+	height: 50px;
+	font-size: 20px;
+	font-weight: bold;
+	color: #fff;
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#acd6ef), to(#6ec2e8));
+	border-radius: 10px;
+	border: 1px solid #66add6;
+	box-shadow: 0 1px 2px rgba(0, 0, 0, .3), inset 0 1px 0 rgba(255, 255, 255, .5);
+	cursor: pointer;
 }
 
-.vladmaxi-top a{
-	padding: 0px 10px;
-	letter-spacing: 1px;
-	color: #333;
-	text-shadow: 0px 1px 1px #fff;
+#container input[type=button]:hover {
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#b6e2ff), to(#6ec2e8));
+}
+
+#container input[type=button]:active {
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#6ec2e8), to(#b6e2ff));
+}
+
+#lower_login input{
+	margin-left: 20px;
+}
+
+#login_form {
 	display: block;
-	float: left;
-	text-decoration:none;
+	position: fixed;
+	width: 250px;
+	height: 280px;
+	top: 20%;
+	left: 30%;
 }
-.vladmaxi-top a:hover{
-	background: #fff;
-}
-.vladmaxi-top span.right{
-	float: right;
-}
-.vladmaxi-top span.right a{
-	float: left;
+
+#login_form label {
+	color: #555;
 	display: block;
+	margin-left: 20px;
+	padding-top: 10px;
+	font-size: 20px;
+}
+
+input[type=text] {
+	color: #777;
+	padding-left: 10px;
+	margin: 10px;
+	margin-top: 12px;
+	margin-left: 18px;
+	width: 290px;
+	height: 35px;
+	border: 1px solid #c7d0d2;
+	border-radius: 2px;
+	box-shadow: inset 0 1.5px 3px rgba(190, 190, 190, .4), 0 0 0 5px #f5f7f8;
+	-webkit-transition: all .4s ease;
+	-moz-transition: all .4s ease;
+	transition: all .4s ease;
+}
+
+input[type=submit]:hover {
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#b6e2ff), to(#6ec2e8));
+}
+
+input[type=submit]:active {
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#6ec2e8), to(#b6e2ff));
+}
+
+input[type=submit]{
+	margin-right: 20px;
+	margin-top: 20px;
+	width: 120px;
+	height: 50px;
+	font-size: 20px;
+	font-weight: bold;
+	color: #fff;
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#acd6ef), to(#6ec2e8));
+	border-radius: 10px;
+	border: 1px solid #66add6;
+	box-shadow: 0 1px 2px rgba(0, 0, 0, .3), inset 0 1px 0 rgba(255, 255, 255, .5);
+	cursor: pointer;
+}
+
+input[type=text]:hover {
+	border: 1px solid #b6bfc0;
+	box-shadow: inset 0 1.5px 3px rgba(190, 190, 190, .7), 0 0 0 5px #f5f7f8;
+}
+
+input[type=text]:focus{
+	border: 1px solid #a8c9e4;
+	box-shadow: inset 0 1.5px 3px rgba(190, 190, 190, .4), 0 0 0 5px #e6f2f9;
 }
