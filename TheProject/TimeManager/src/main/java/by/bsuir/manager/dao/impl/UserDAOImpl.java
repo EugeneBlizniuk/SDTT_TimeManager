@@ -2,6 +2,7 @@ package by.bsuir.manager.dao.impl;
 
 import by.bsuir.manager.dao.UserDAO;
 import by.bsuir.manager.dao.exception.DAOException;
+import by.bsuir.manager.dao.secure.PasswordSecure;
 import by.bsuir.manager.entity.User;
 
 import java.sql.*;
@@ -66,7 +67,7 @@ public class UserDAOImpl implements UserDAO {
 
             statement.setInt(1, user.getId());
             statement.setString(2, user.getLogin());
-            statement.setString(3, user.getPassword());
+            statement.setInt(3, user.getPassword());
             statement.setString(4, getCurrentTimeStamp());
             statement.executeUpdate();
 
@@ -138,13 +139,17 @@ public class UserDAOImpl implements UserDAO {
     @Override
     public boolean signIn(String login, String password) throws DAOException {
         boolean isCorrect = false;
-
+        int hashedPassword = PasswordSecure.getInstance().getPasswordHash(password);
+        System.out.println(hashedPassword);
         try(Connection connection = getDBConnection();
             PreparedStatement statement = connection.prepareStatement(SQL_SELECT_PASSWORD_BY_LOGIN)) {
             statement.setString(1, login);
             try(ResultSet resultSet = statement.executeQuery()) {
                 while(resultSet.next()) {
-                    if(resultSet.getString(PASSWORD).equals(password)) {
+                    System.out.println("resultSet.next():\n");
+                    System.out.println(hashedPassword);
+                    System.out.println(resultSet.getInt(PASSWORD));
+                    if(resultSet.getInt(PASSWORD) == hashedPassword ) {
                         isCorrect = true;
                     }
                 }

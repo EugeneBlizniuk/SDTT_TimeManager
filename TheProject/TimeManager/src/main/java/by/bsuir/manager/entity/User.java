@@ -1,19 +1,22 @@
 package by.bsuir.manager.entity;
 
+import by.bsuir.manager.dao.secure.PasswordSecure;
+
 import java.util.Objects;
 
 public class User extends Entity{
     private String login;
-    private String password;
+    private int password;
     private int id;
     private String time;
 
     public User() {}
 
     public User(String login, String password) {
+        PasswordSecure ps = PasswordSecure.getInstance();
         this.login = login;
-        this.password = password;
-        this.id = this.hashCode();
+        this.password = ps.getPasswordHash(password);
+        this.id = ps.getPasswordHash(login);
     }
 
     public void setId(int id) {
@@ -25,7 +28,7 @@ public class User extends Entity{
     }
 
     public void setPassword(String password) {
-        this.password = password;
+        this.password = PasswordSecure.getInstance().getPasswordHash(password);
     }
 
     public void setTime(String time) {
@@ -36,7 +39,7 @@ public class User extends Entity{
         return login;
     }
 
-    public String getPassword() {
+    public int getPassword() {
         return password;
     }
 
@@ -55,7 +58,7 @@ public class User extends Entity{
         User user = (User)o;
 
         return this.login.equals(user.login) &&
-                this.password.equals(user.password) &&
+                this.password == user.password &&
                 this.id == user.id;
     }
 
