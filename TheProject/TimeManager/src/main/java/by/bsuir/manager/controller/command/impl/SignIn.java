@@ -1,23 +1,21 @@
 package by.bsuir.manager.controller.command.impl;
 
 import by.bsuir.manager.controller.command.Command;
+import by.bsuir.manager.entity.User;
 import by.bsuir.manager.service.ClientService;
 import by.bsuir.manager.service.factory.ServiceFactory;
 
 public class SignIn implements Command {
     @Override
     public String execute(String request) {
-        String login = null;
-        String password = null;
-        String response = null;
+        String[] list = RegExParser.parseCommand(request);
+        String response;
+        String login = list[1];
+        String password = list[2];
 
-        //get parameters from request and initialize the variables login and password
+        ClientService client = ServiceFactory.getInstance().getClientService();
 
-        ServiceFactory serviceFactory = ServiceFactory.getInstance();
-        ClientService clientService = serviceFactory.getClientService();
-
-        clientService.signIn(login, password);
-        response = "(SignIn)Welcome!";
+        response = client.signIn(login, password);
 
         return response;
     }

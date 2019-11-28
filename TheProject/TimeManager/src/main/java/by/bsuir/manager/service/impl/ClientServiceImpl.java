@@ -6,10 +6,26 @@ import by.bsuir.manager.dao.factory.DAOFactory;
 import by.bsuir.manager.entity.User;
 import by.bsuir.manager.service.ClientService;
 
+import static by.bsuir.manager.constants.Constants.CORRECT_PASSWORD;
+
 public class ClientServiceImpl implements ClientService {
     @Override
-    public boolean signIn(String login, String password) {
-        return false;
+    public String signIn(String login, String password) {
+        UserDAO userDAO = DAOFactory.getInstance().getUserDAO();
+        try {
+            if(!userDAO.isExisting(login)) {
+                return login;
+            } else {
+                if(!userDAO.signIn(login, password)) {
+                    return password;
+                }
+            }
+        } catch (DAOException e) {
+            //log
+            e.printStackTrace();
+        }
+
+        return CORRECT_PASSWORD;
     }
 
     @Override
@@ -20,8 +36,7 @@ public class ClientServiceImpl implements ClientService {
     @Override
     public boolean signUp(User user) {
         boolean isAdded = false;
-        DAOFactory daoFactory = DAOFactory.getInstance();
-        UserDAO userDAO = daoFactory.getUserDAO();
+        UserDAO userDAO = DAOFactory.getInstance().getUserDAO();
         try {
             if(!userDAO.isExisting(user.getLogin())) {
                 isAdded = userDAO.signUp(user);

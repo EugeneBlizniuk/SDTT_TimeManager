@@ -11,8 +11,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
+import static by.bsuir.manager.constants.Constants.PASSWORD;
+
 public class UserDAOImpl implements UserDAO {
-    private static final String SQL_SELECT_PASSWORD_BY_LOGIN = "SELECT password FROM users WHERE login=?";
+    private static final String SQL_SELECT_PASSWORD_BY_LOGIN = "SELECT * FROM users WHERE login=?";
     private static final String SQL_ADD_A_USER = "INSERT INTO users(id, login, password, registration_time) " +
                                                  "VALUES(?, ?, ?, ?)";
     private static final String SQL_SELECT_USER_BY_LOGIN = "SELECT 2 FROM users WHERE login=?";
@@ -141,8 +143,10 @@ public class UserDAOImpl implements UserDAO {
             PreparedStatement statement = connection.prepareStatement(SQL_SELECT_PASSWORD_BY_LOGIN)) {
             statement.setString(1, login);
             try(ResultSet resultSet = statement.executeQuery()) {
-                if(resultSet.getString("password").equals(password)) {
-                    isCorrect = true;
+                while(resultSet.next()) {
+                    if(resultSet.getString(PASSWORD).equals(password)) {
+                        isCorrect = true;
+                    }
                 }
             }
         } catch (SQLException e) {

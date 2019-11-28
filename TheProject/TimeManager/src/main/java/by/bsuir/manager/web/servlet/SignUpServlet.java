@@ -1,6 +1,7 @@
 package by.bsuir.manager.web.servlet;
 
 import by.bsuir.manager.controller.Controller;
+import by.bsuir.manager.controller.factory.ControllerFactory;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -27,9 +28,8 @@ public class SignUpServlet extends HttpServlet {
 
 
         if(login != null && password.equals(secondPassword)) {
-            Controller controller = new Controller();
-            String command = "Sign_Up" + "-" + login + "-" + password;
-            controller.executeTask(command);
+            Controller controller = ControllerFactory.getInstance().getController();
+            controller.executeTask("Sign_Up" + "-" + login + "-" + password);
         }
     }
 }
