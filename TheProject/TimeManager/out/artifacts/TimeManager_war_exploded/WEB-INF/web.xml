@@ -9,10 +9,6 @@
         <session-timeout>30</session-timeout>
     </session-config>
 
-    <welcome-file-list>
-        <welcome-file>WelcomePage.html</welcome-file>
-    </welcome-file-list>
-
     <servlet>
         <servlet-name>WelcomeServlet</servlet-name>
         <servlet-class>by.bsuir.manager.web.servlet.WelcomeServlet</servlet-class>
@@ -21,6 +17,11 @@
     <servlet>
         <servlet-name>SignUpServlet</servlet-name>
         <servlet-class>by.bsuir.manager.web.servlet.SignUpServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>MainPageServlet</servlet-name>
+        <servlet-class>by.bsuir.manager.web.servlet.MainPageServlet</servlet-class>
     </servlet>
 
     <servlet>
@@ -41,6 +42,11 @@
     <servlet-mapping>
         <servlet-name>WelcomeServlet</servlet-name>
         <url-pattern>/home</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>MainPageServlet</servlet-name>
+        <url-pattern>/main-page</url-pattern>
     </servlet-mapping>
 
 </web-app>

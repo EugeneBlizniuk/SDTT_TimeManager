@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Properties;
 
 public class UserDAOImpl implements UserDAO {
-    private static final String SQL_SELECT_ALL_USERS = "SELECT id, login FROM users";
+    private static final String SQL_SELECT_PASSWORD_BY_LOGIN = "SELECT password FROM users WHERE login=?";
     private static final String SQL_ADD_A_USER = "INSERT INTO users(id, login, password, registration_time) " +
                                                  "VALUES(?, ?, ?, ?)";
     private static final String SQL_SELECT_USER_BY_LOGIN = "SELECT 2 FROM users WHERE login=?";
@@ -128,26 +128,28 @@ public class UserDAOImpl implements UserDAO {
             }
         } catch (SQLException e) {
             throw new DAOException(e);
-        } finally {
-//            close(connection);
         }
 
         return  isExisting;
     }
 
     @Override
-    public void close(Statement statement) {
+    public boolean signIn(String login, String password) throws DAOException {
+        boolean isCorrect = false;
 
-    }
+        try(Connection connection = getDBConnection();
+            PreparedStatement statement = connection.prepareStatement(SQL_SELECT_PASSWORD_BY_LOGIN)) {
+            statement.setString(1, login);
+            try(ResultSet resultSet = statement.executeQuery()) {
+                if(resultSet.getString("password").equals(password)) {
+                    isCorrect = true;
+                }
+            }
+        } catch (SQLException e) {
+            throw new DAOException(e);
+        }
 
-    @Override
-    public void close(Connection connection) {
-
-    }
-
-    @Override
-    public boolean signIn(String login, String password) {
-        return false;
+        return  isCorrect;
     }
 
     private String getCurrentTimeStamp() {
