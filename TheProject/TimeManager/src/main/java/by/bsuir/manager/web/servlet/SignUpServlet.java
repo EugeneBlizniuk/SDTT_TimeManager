@@ -13,6 +13,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.*;
 
+import static by.bsuir.manager.constants.Constants.*;
+
 public class SignUpServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -27,9 +29,22 @@ public class SignUpServlet extends HttpServlet {
         String secondPassword = request.getParameter("secondPassword");
 
 
-        if(login != null && password.equals(secondPassword)) {
-            Controller controller = ControllerFactory.getInstance().getController();
-            controller.executeTask("Sign_Up" + "-" + login + "-" + password);
+        if(login != null && password != null && secondPassword != null) {
+            PrintWriter printWriter = response.getWriter();
+            if(!login.equals("") && !password.equals("") && !secondPassword.equals("")) {
+                if(password.equals(secondPassword)) {
+                    Controller controller = ControllerFactory.getInstance().getController();
+                    if(controller.executeTask("Sign_Up" + "-" + login + "-" + password).equals(USER_IS_ADDED)) {
+                        response.sendRedirect("/main-page");
+                    } else {
+                        printWriter.print(LOGIN_EXISTS_JS);
+                    }
+                } else {
+                    printWriter.print(PASSWORDS_DO_NOT_MATCH_JS);
+                }
+            } else {
+                printWriter.print(EMPTY_FIELD_SU_JS);
+            }
         }
     }
 }

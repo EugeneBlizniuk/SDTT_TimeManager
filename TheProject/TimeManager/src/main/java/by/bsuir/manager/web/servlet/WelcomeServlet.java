@@ -7,13 +7,15 @@ import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.*;
 import java.io.IOException;
+import java.io.PrintWriter;
 
-import static by.bsuir.manager.constants.Constants.CORRECT_PASSWORD;
+import static by.bsuir.manager.constants.Constants.*;
 
 public class WelcomeServlet extends HttpServlet {
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/pages/WelcomePage.html");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/pages/WelcomePage.jsp");
         dispatcher.forward(request, response);
     }
 
@@ -27,22 +29,20 @@ public class WelcomeServlet extends HttpServlet {
             System.out.println("login: " + login + "\nPassword: " + password + "\n");
 
             if(login != null && password != null) {
-                String result;
-                Controller controller = ControllerFactory.getInstance().getController();
-                result = controller.executeTask("Sign_In" + "-" + login + "-" + password);
-                if(result.equals(CORRECT_PASSWORD)) {
-                    System.out.println("Result: " + result);
-                    response.sendRedirect("/main-page");
-                } else if(result.equals(login)) {
-                    //show the login is not correct
-                    request.setAttribute("login", login);
-                    doGet(request, response);
-                    System.out.println(result);
+                PrintWriter printWriter = response.getWriter();
+                if(!login.equals("") && !password.equals("")) {
+                    String result;
+                    Controller controller = ControllerFactory.getInstance().getController();
+                    result = controller.executeTask("Sign_In" + "-" + login + "-" + password);
+                    if(result.equals(CORRECT_PASSWORD)) {
+                        response.sendRedirect("/main-page");
+                    } else if(result.equals(login)) {
+                        printWriter.print(WRONG_LOGIN_JS);
+                    } else {
+                        printWriter.print(WRONG_PASSWORD_JS);
+                    }
                 } else {
-                    //show the password is not correct
-                    request.setAttribute("password", password);
-                    doGet(request, response);
-                    System.out.println(result);
+                    printWriter.print(EMPTY_FIELD_JS);
                 }
             }
         } else if(request.getParameter("justTryButton") != null) {

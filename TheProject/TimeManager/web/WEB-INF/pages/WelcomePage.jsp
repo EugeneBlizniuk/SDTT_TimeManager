@@ -1,8 +1,17 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: Yauheni
+  Date: 29.11.2019
+  Time: 22:04
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Welcome page</title>
+
     <!--    <link rel="stylesheet" type="text/css" href="../web_resources/css/SignUp.css">-->
     <style>
         html, body {
@@ -122,24 +131,21 @@
     </style>
 </head>
 <body>
-    <h1>What's up?</h1>
-    <form method="post" action="/home">
-        <div id="login_form">
-            <label>Login:</label>
-            <input type="text" name="login">
-            <label>Password:</label>
-            <input type="password" name="password">
-            <div id="lower_login">
-                <input type="submit" name="signInButton" value="Sign In">
-            </div>
+<h1>What's up?</h1>
+<form method="post" action="/home">
+    <div id="login_form">
+        <label>Login:</label>
+        <input type="text" name="login">
+        <label>Password:</label>
+        <input type="password" name="password">
+        <div id="lower_login">
+            <input type="submit" name="signInButton" value="Sign In">
         </div>
-        <div id="container">
-            <input id="sign_up" name="signUpButton" type="submit" value="Sign Up">
-            <input id="just_try" name="justTryButton" type="submit" value="Just try">
-        </div>
-        <div>
-
-        </div>
-    </form>
+    </div>
+    <div id="container">
+        <input id="sign_up" name="signUpButton" type="submit" value="Sign Up">
+        <input id="just_try" name="justTryButton" type="submit" value="Just try">
+    </div>
+</form>
 </body>
 </html>
