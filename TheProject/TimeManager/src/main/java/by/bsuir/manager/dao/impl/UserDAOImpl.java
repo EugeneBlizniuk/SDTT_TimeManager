@@ -140,15 +140,15 @@ public class UserDAOImpl implements UserDAO {
     public boolean signIn(String login, String password) throws DAOException {
         boolean isCorrect = false;
         int hashedPassword = PasswordSecure.getInstance().getPasswordHash(password);
-        System.out.println(hashedPassword);
+//        System.out.println(hashedPassword);
         try(Connection connection = getDBConnection();
             PreparedStatement statement = connection.prepareStatement(SQL_SELECT_PASSWORD_BY_LOGIN)) {
             statement.setString(1, login);
             try(ResultSet resultSet = statement.executeQuery()) {
                 while(resultSet.next()) {
-                    System.out.println("resultSet.next():\n");
-                    System.out.println(hashedPassword);
-                    System.out.println(resultSet.getInt(PASSWORD));
+//                    System.out.println("resultSet.next():\n");
+//                    System.out.println(hashedPassword);
+//                    System.out.println(resultSet.getInt(PASSWORD));
                     if(resultSet.getInt(PASSWORD) == hashedPassword ) {
                         isCorrect = true;
                     }

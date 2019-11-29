@@ -24,19 +24,24 @@ public class WelcomeServlet extends HttpServlet {
         } else if(request.getParameter("signInButton") != null) {
             String login = request.getParameter("login");
             String password = request.getParameter("password");
-            System.out.println("login: " + login + "Password: " + password + "\n");
+            System.out.println("login: " + login + "\nPassword: " + password + "\n");
 
             if(login != null && password != null) {
                 String result;
                 Controller controller = ControllerFactory.getInstance().getController();
                 result = controller.executeTask("Sign_In" + "-" + login + "-" + password);
                 if(result.equals(CORRECT_PASSWORD)) {
+                    System.out.println("Result: " + result);
                     response.sendRedirect("/main-page");
                 } else if(result.equals(login)) {
                     //show the login is not correct
+                    request.setAttribute("login", login);
+                    doGet(request, response);
                     System.out.println(result);
                 } else {
                     //show the password is not correct
+                    request.setAttribute("password", password);
+                    doGet(request, response);
                     System.out.println(result);
                 }
             }

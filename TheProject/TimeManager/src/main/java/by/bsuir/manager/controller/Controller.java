@@ -14,8 +14,8 @@ public final class Controller {
 
         commandName = request.substring(0, request.indexOf(paramDelimiter));
         executionCommand = provider.getCommand(commandName);
-        System.out.println(request);
-        System.out.println(commandName);
+//        System.out.println(request);
+//        System.out.println(commandName);
 
         String response;
         response = executionCommand.execute(request);
