@@ -66,7 +66,7 @@ To test the application we need to write manually some requests.
 
 <a name="6"></a>
 ## 6. Results
-[Test result](https://github.com/BoryaD/PacMan/blob/master/Testing/Test%20results.md).
+[Test result](../TestResult.md).
 
 <a name="7"></a>
 ## 7. Conclusion
